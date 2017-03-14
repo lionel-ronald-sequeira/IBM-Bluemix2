@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/delete">Delete</a></li>
+    </ul>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+              <span>{{ message }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/download" method="post">
+        <input type="text" name="file_name">
+        <input type="text" name="version_no">
+        <input type="submit" name="Delete">
+    </form>
+    <br/>
+    <table border="1">
+        <tr>
+            <th>Filename</th>
+            <th>Version No</th>
+            <th>Last Modified</th>
+        </tr>
+
+            {% for file in files %}
+                <tr>
+                    <td>{{ file['file_name'] }}</td>
+                    <td>{{ file['version_no'] }}</td>
+                    <td>{{ file['last_modified'] }}</td>
+                </tr>
+            {% endfor %}
+
+    </table>
+</body>
+</html>

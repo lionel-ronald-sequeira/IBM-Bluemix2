@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/delete">Delete</a></li>
+        <li><a href="/download">Download</a></li>
+    </ul>
+    <br/>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+              <span>{{ message }}</span>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" name="Upload">
+    </form>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Filename</th>
+            <th>Version No</th>
+            <th>Last Modified</th>
+        </tr>
+
+            {% for file in files %}
+                <tr>
+                    <td>{{ file['file_name'] }}</td>
+                    <td>{{ file['version_no'] }}</td>
+                    <td>{{ file['last_modified'] }}</td>
+                </tr>
+            {% endfor %}
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,11 @@
+applications:
+- path: .
+  memory: 128M
+  instances: 1
+  domain: mybluemix.net
+  name: lionelfilestorage1
+  host: lionelfilestorage1
+  disk_quota: 1024M
+  services:
+  - Cloudant NoSQL DB-4u
+  buildpack: python_buildpack

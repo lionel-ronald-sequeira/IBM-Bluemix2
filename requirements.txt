@@ -1,0 +1,2 @@
+Flask==0.12
+cloudant==2.3.1
